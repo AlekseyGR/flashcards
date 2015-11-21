@@ -1,5 +1,4 @@
 class Home::UsersController < Home::BaseController
-  respond_to :html
 
   def new
     if current_user
