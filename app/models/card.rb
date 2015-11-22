@@ -47,8 +47,8 @@ class Card < ActiveRecord::Base
   end
 
   def self.first_repeating_or_pending_card
-    card = self.pending.try(:first)
-    card ||= self.repeating.try(:first)
+    card = pending.try(:first)
+    card ||= repeating.try(:first)
     card
   end
 
