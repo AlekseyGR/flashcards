@@ -3,8 +3,8 @@ require 'super_memo'
 class Card < ActiveRecord::Base
   belongs_to :user
   belongs_to :block
+
   validates :user_id, presence: true
-  before_validation :set_review_date_as_now, on: :create
   validate :texts_are_not_equal
   validates :original_text, :translated_text, :review_date,
             presence: { message: 'Необходимо заполнить поле.' }
@@ -12,6 +12,8 @@ class Card < ActiveRecord::Base
   validates :block_id,
             presence: { message: 'Выберите колоду из выпадающего списка.' }
   validates :interval, :repeat, :efactor, :quality, :attempt, presence: true
+
+  before_validation :set_review_date_as_now, on: :create
 
   mount_uploader :image, CardImageUploader
 
@@ -24,15 +26,7 @@ class Card < ActiveRecord::Base
 
     sm_hash = SuperMemo.algorithm(interval, repeat, efactor, attempt, distance, 1)
 
-    if distance <= 1
-      sm_hash.merge!({ review_date: Time.now + interval.to_i.days, attempt: 1 })
-      update(sm_hash)
-      { state: true, distance: distance }
-    else
-      sm_hash.merge!({ attempt: [attempt + 1, 5].min })
-      update(sm_hash)
-      { state: false, distance: distance }
-    end
+    handle_answer_distance(distance, sm_hash)
   end
 
   def self.pending_cards_notification
@@ -41,6 +35,24 @@ class Card < ActiveRecord::Base
       if user.cards.pending.any?
         CardsMailer.pending_cards_notification(user.email).deliver
       end
+    end
+  end
+
+  def self.first_repeating_or_pending_card
+    card = pending.try(:first)
+    card ||= repeating.try(:first)
+    card
+  end
+
+  def handle_answer_distance(distance, sm_hash)
+    if distance <= 1
+      sm_hash.merge!(review_date: Time.zone.now + interval.to_i.days, attempt: 1)
+      update(sm_hash)
+      { state: true, distance: distance }
+    else
+      sm_hash.merge!(attempt: [attempt + 1, 5].min)
+      update(sm_hash)
+      { state: false, distance: distance }
     end
   end
 

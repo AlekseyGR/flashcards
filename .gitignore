@@ -18,3 +18,8 @@
 config/database.yml
 config/application.yml
 public/uploads/
+
+# swp files
+*.swo
+*.swp
+*.swn
