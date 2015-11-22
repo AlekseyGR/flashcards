@@ -4,13 +4,7 @@ class Dashboard::TrainerController < Dashboard::BaseController
     if params[:id]
       @card = current_user.cards.find(params[:id])
     else
-      if current_user.current_block
-        @card = current_user.current_block.cards.pending.first
-        @card ||= current_user.current_block.cards.repeating.first
-      else
-        @card = current_user.cards.pending.first
-        @card ||= current_user.cards.repeating.first
-      end
+      @card = first_repeating_or_pending_card
     end
 
     respond_to do |format|
@@ -41,6 +35,18 @@ class Dashboard::TrainerController < Dashboard::BaseController
   end
 
   private
+
+  def first_repeating_or_pending_card
+    if current_user.current_block
+      card = current_user.current_block.cards.pending.first
+      card ||= current_user.current_block.cards.repeating.first
+    else
+      card = current_user.cards.pending.first
+      card ||= current_user.cards.repeating.first
+    end
+
+    card
+  end
 
   def trainer_params
     params.permit(:user_translation)
