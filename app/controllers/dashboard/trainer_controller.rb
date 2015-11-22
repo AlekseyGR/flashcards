@@ -38,14 +38,10 @@ class Dashboard::TrainerController < Dashboard::BaseController
 
   def first_repeating_or_pending_card
     if current_user.current_block
-      card = current_user.current_block.cards.pending.first
-      card ||= current_user.current_block.cards.repeating.first
+      current_user.current_block.cards.first_repeating_or_pending_card
     else
-      card = current_user.cards.pending.first
-      card ||= current_user.cards.repeating.first
+      current_user.cards.first_repeating_or_pending_card
     end
-
-    card
   end
 
   def trainer_params

@@ -46,6 +46,12 @@ class Card < ActiveRecord::Base
     end
   end
 
+  def self.first_repeating_or_pending_card
+    card = self.pending.try(:first)
+    card ||= self.repeating.try(:first)
+    card
+  end
+
   protected
 
   def set_review_date_as_now
