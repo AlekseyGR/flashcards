@@ -46,11 +46,11 @@ class Card < ActiveRecord::Base
 
   def handle_answer_distance(distance, sm_hash)
     if distance <= 1
-      sm_hash.merge!({ review_date: Time.now + interval.to_i.days, attempt: 1 })
+      sm_hash.merge!(review_date: Time.zone.now + interval.to_i.days, attempt: 1)
       update(sm_hash)
       { state: true, distance: distance }
     else
-      sm_hash.merge!({ attempt: [attempt + 1, 5].min })
+      sm_hash.merge!(attempt: [attempt + 1, 5].min)
       update(sm_hash)
       { state: false, distance: distance }
     end
