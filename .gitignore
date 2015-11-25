@@ -23,3 +23,6 @@ public/uploads/
 *.swo
 *.swp
 *.swn
+
+# Vagrant files
+/.vagrant
