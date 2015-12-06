@@ -38,6 +38,8 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'rolify'
 gem 'pundit'
 
+gem 'russian' # install russian data for locale
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
