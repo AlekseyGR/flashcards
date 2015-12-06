@@ -36,6 +36,7 @@ gem 'responders'
 
 gem 'activeadmin', github: 'activeadmin'
 gem 'rolify'
+gem 'pundit'
 
 group :development, :test do
   gem 'rspec-rails'

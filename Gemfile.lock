@@ -173,6 +173,8 @@ GEM
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     puma (2.15.3)
+    pundit (1.0.1)
+      activesupport (>= 3.0.0)
     rack (1.6.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -299,6 +301,7 @@ DEPENDENCIES
   nokogiri
   pg
   puma
+  pundit
   rails (= 4.2.1)
   rails_12factor
   rake
