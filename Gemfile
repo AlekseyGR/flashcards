@@ -34,6 +34,8 @@ gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'responders'
 
+gem 'activeadmin', github: 'activeadmin'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
