@@ -26,8 +26,8 @@ echo '--> Installing ruby'
   export RBENV_ROOT="${HOME}/.rbenv"
   export PATH="${RBENV_ROOT}/bin:${PATH}"
   export PATH="${RBENV_ROOT}/shims:${PATH}"
-  rbenv install 2.1.4
-  rbenv global 2.1.4
+  rbenv install 2.2.3
+  rbenv global 2.2.3
   gem install bundler
   rbenv rehash
 
