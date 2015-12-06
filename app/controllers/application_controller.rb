@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   respond_to :html
 
+  def authenticate_admin_user!
+    redirect_to login_path unless current_user
+  end
+
   private
 
   def set_locale
@@ -26,4 +30,5 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = {})
     { locale: I18n.locale }.merge options
   end
+
 end
