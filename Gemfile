@@ -37,6 +37,7 @@ gem 'responders'
 
 gem 'activeadmin', github: 'activeadmin'
 gem 'rolify'
+gem 'pundit'
 
 group :development do
   gem 'web-console'
