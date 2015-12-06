@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless current_user
   end
 
+  def access_denied(exception)
+    redirect_back_or_to root_path, alert: exception.message
+  end
+
   private
 
   def set_locale
