@@ -32,7 +32,10 @@ gem 'http_accept_language'
 gem 'routing-filter'
 gem 'rollbar'
 gem 'newrelic_rpm'
+
 gem 'responders'
+
+gem 'activeadmin', github: 'activeadmin'
 
 group :development do
   gem 'web-console'
