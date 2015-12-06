@@ -1,7 +1,17 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+
   protect_from_forgery with: :exception
   before_action :set_locale
   respond_to :html
+
+  def authenticate_admin_user!
+    redirect_to login_path unless current_user
+  end
+
+  def access_denied(exception)
+    redirect_to root_path, alert: exception.message
+  end
 
   private
 
@@ -26,4 +36,5 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = {})
     { locale: I18n.locale }.merge options
   end
+
 end

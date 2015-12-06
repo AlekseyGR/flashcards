@@ -34,8 +34,16 @@ gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'responders'
 
+gem 'activeadmin', github: 'activeadmin'
+gem 'rolify'
+gem 'pundit'
+
+gem 'russian' # install russian data for locale
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'launchy' # debugging capybara test
   gem 'factory_girl_rails'
+  gem 'pry-byebug' # Use by adding binding.pry in code to debug
 end
