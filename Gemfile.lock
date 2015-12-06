@@ -54,6 +54,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.3)
@@ -149,6 +150,8 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     levenshtein (0.2.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -323,6 +326,7 @@ DEPENDENCIES
   http_accept_language
   jbuilder (~> 2.0)
   jquery-rails
+  launchy
   levenshtein
   mini_magick
   newrelic_rpm
