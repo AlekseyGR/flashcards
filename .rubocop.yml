@@ -1,0 +1,22 @@
+# https://github.com/bbatsov/ruby-style-guide
+
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - 'db/schema.rb'
+    - 'bin/**/*'
+    - 'log/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+
+# Comments don't need to be in English only
+Style/AsciiComments:
+  Enabled: false
+
+# Do not enforce documentation rules
+Style/Documentation:
+  Enabled: false
+
+# Default 80
+Metrics/LineLength:
+  Max: 120
