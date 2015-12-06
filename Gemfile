@@ -36,6 +36,7 @@ gem 'newrelic_rpm'
 gem 'responders'
 
 gem 'activeadmin', github: 'activeadmin'
+gem 'rolify'
 
 group :development do
   gem 'web-console'
