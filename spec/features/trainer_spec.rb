@@ -7,7 +7,7 @@ describe 'review cards without blocks' do
     before do
       create(:user)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_with('test@test.com', '12345', 'Войти')
     end
 
     it 'no cards' do
@@ -21,7 +21,7 @@ describe 'review cards with one block' do
     before do
       create(:user_with_one_block_without_cards)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_with('test@test.com', '12345', 'Войти')
     end
 
     it 'no cards' do
@@ -35,7 +35,7 @@ describe 'review cards with one block' do
       user.cards.each { |card| card.update_attribute(:review_date,
                                                      Time.now - 3.days) }
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_with('test@test.com', '12345', 'Войти')
     end
 
     it 'first visit' do
@@ -75,7 +75,7 @@ describe 'review cards with one block' do
       user.cards.each { |card| card.update_attribute(:review_date,
                                                      Time.now - 3.days) }
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_with('test@test.com', '12345', 'Войти')
     end
 
     it 'incorrect translation' do
@@ -133,7 +133,7 @@ describe 'review cards with two blocks' do
     before do
       create(:user_with_two_blocks_without_cards)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_with('test@test.com', '12345', 'Войти')
     end
 
     it 'no cards' do
@@ -147,7 +147,7 @@ describe 'review cards with two blocks' do
       user.cards.each { |card| card.update_attribute(:review_date,
                                                      Time.now - 3.days) }
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_with('test@test.com', '12345', 'Войти')
     end
 
     it 'first visit' do
@@ -187,7 +187,7 @@ describe 'review cards with two blocks' do
       user.cards.each { |card| card.update_attribute(:review_date,
                                                      Time.now - 3.days) }
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_with('test@test.com', '12345', 'Войти')
     end
 
     it 'incorrect translation' do
@@ -223,7 +223,7 @@ describe 'review cards with current_block' do
     before do
       create(:user_with_two_blocks_without_cards, current_block_id: 1)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_with('test@test.com', '12345', 'Войти')
     end
 
     it 'no cards' do
@@ -239,7 +239,7 @@ describe 'review cards with current_block' do
       card = user.cards.find_by(block_id: block.id)
       card.update_attribute(:review_date, Time.now - 3.days)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_with('test@test.com', '12345', 'Войти')
     end
 
     it 'first visit' do
@@ -281,7 +281,7 @@ describe 'review cards with current_block' do
       card = user.cards.find_by(block_id: block.id)
       card.update_attribute(:review_date, Time.now - 3.days)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login_with('test@test.com', '12345', 'Войти')
     end
 
     it 'incorrect translation' do

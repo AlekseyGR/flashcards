@@ -15,12 +15,26 @@ feature 'User try enter to Admin dashboard' do
 
     before(:each) do
       visit root_path
-      login('test@test.com', '12345', 'Войти')
+      login_with('test@test.com', '12345', 'Войти')
       visit admin_root_path
     end
 
     it 'and open admin dashboard' do
       expect(page).to have_content('Flashcards Admin Panel')
+    end
+  end
+
+  describe 'when user logged in as not admin' do
+    let!(:user) { create(:user) }
+
+    before(:each) do
+      visit root_path
+      login_with('test@test.com', '12345', 'Войти')
+      visit admin_root_path
+    end
+
+    it 'should redirect to root path' do
+      expect(page).to have_content('Вы не авторизованы для выполнения данного действия.')
     end
   end
 end
