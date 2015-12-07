@@ -23,5 +23,4 @@ feature 'User try enter to Admin dashboard' do
       expect(page).to have_content('Flashcards Admin Panel')
     end
   end
-
 end
