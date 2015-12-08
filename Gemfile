@@ -32,7 +32,12 @@ gem 'http_accept_language'
 gem 'routing-filter'
 gem 'rollbar'
 gem 'newrelic_rpm'
+
 gem 'responders'
+
+gem 'activeadmin', github: 'activeadmin'
+gem 'rolify'
+gem 'pundit'
 
 group :development do
   gem 'web-console'
@@ -42,6 +47,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'launchy'
   gem 'factory_girl_rails'
   gem 'pry-byebug'
 end

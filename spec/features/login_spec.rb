@@ -52,24 +52,24 @@ describe 'password authentication' do
     end
 
     it 'authentication TRUE' do
-      login('test@test.com', '12345', 'Войти')
+      login_with('test@test.com', '12345', 'Войти')
       expect(page).to have_content 'Вход выполнен успешно.'
     end
 
     it 'incorrect e-mail' do
-      login('1@1.com', '12345', 'Войти')
+      login_with('1@1.com', '12345', 'Войти')
       expect(page).
           to have_content 'Вход не выполнен. Проверте вводимые E-mail и Пароль.'
     end
 
     it 'incorrect password' do
-      login('test@test.com', '56789', 'Войти')
+      login_with('test@test.com', '56789', 'Войти')
       expect(page).
           to have_content 'Вход не выполнен. Проверте вводимые E-mail и Пароль.'
     end
 
     it 'incorrect e-mail and password' do
-      login('1@1.com', '56789', 'Войти')
+      login_with('1@1.com', '56789', 'Войти')
       expect(page).
           to have_content 'Вход не выполнен. Проверте вводимые E-mail и Пароль.'
     end
@@ -111,7 +111,7 @@ describe 'password authentication' do
     it 'authentication TRUE' do
       create(:user)
       click_link 'en'
-      login('test@test.com', '12345', 'Log in')
+      login_with('test@test.com', '12345', 'Log in')
       expect(page).to have_content 'Login is successful.'
     end
   end
