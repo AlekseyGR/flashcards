@@ -16,6 +16,28 @@
   </div>
 
   <div class="form-group">
+    <span>
+      <%= 'Не можете выбрать картинку?' %>
+    </span>
+    <span class="flickr-button btn btn-default">
+      <%= 'Поиск на Flickr' %>
+    </span>
+  </div>
+
+  <div class="form-group hidden" id="flickr-search-form">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search for...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go!</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.input :block_id, collection: current_user.blocks.all.order('title'),
                       prompt: 'Выберите колоду', label: 'Колоды',
                       input_html: { class: 'form-control', required: true } %>
