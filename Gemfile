@@ -39,6 +39,8 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'rolify'
 gem 'pundit'
 
+gem 'flickraw'
+
 group :development do
   gem 'web-console'
   gem 'rubocop', require: false
