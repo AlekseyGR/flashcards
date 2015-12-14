@@ -1,4 +1,6 @@
 class Dashboard::CardsController < Dashboard::BaseController
+  require 'flickraw'
+
   before_action :set_card, only: [:destroy, :edit, :update]
 
   def index
@@ -32,6 +34,20 @@ class Dashboard::CardsController < Dashboard::BaseController
   def destroy
     @card.destroy
     respond_with @card
+  end
+
+  def flickr_search
+    count = 0
+    search_tag = params[:search]
+
+    begin
+      photos = flickr.photos.search(text: search_tag, per_page: 10)
+      @photos = photos.map { |photo| FlickRaw.url_q(photo) }
+    rescue Errno::ECONNRESET => e
+      count += 1
+      retry unless count > 10
+      logger.fatal "tried 10 times and couldn't get #{search_tag}: #{e}"
+    end
   end
 
   private

@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :users, only: :destroy
     post 'logout' => 'user_sessions#destroy', :as => :logout
 
+    get 'image_search', to: 'cards#flickr_search'
+
     resources :cards
 
     resources :blocks do
