@@ -36,20 +36,6 @@ class Dashboard::CardsController < Dashboard::BaseController
     respond_with @card
   end
 
-  def flickr_search
-    count = 0
-    search_tag = params[:search]
-
-    begin
-      photos = flickr.photos.search(text: search_tag, per_page: 10)
-      @photos = photos.map { |photo| FlickRaw.url_q(photo) }
-    rescue Errno::ECONNRESET => e
-      count += 1
-      retry unless count > 10
-      logger.fatal "tried 10 times and couldn't get #{search_tag}: #{e}"
-    end
-  end
-
   private
 
   def set_card
@@ -58,6 +44,6 @@ class Dashboard::CardsController < Dashboard::BaseController
 
   def card_params
     params.require(:card).permit(:original_text, :translated_text, :review_date,
-                                 :image, :image_cache, :remove_image, :block_id)
+                                 :image, :image_cache, :remove_image, :remote_image_url, :block_id)
   end
 end
