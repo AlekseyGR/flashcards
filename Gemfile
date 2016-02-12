@@ -39,6 +39,8 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'rolify'
 gem 'pundit'
 
+gem 'flickraw-cached'
+
 group :development do
   gem 'web-console'
   gem 'rubocop', require: false
@@ -50,4 +52,9 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'pry-byebug'
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'webmock'
 end

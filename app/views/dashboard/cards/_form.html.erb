@@ -15,6 +15,32 @@
     <%= f.input :image_cache, as: :hidden %>
   </div>
 
+  <div class="form-group hidden">
+    <%= f.text_field :remote_image_url %>
+  </div>
+
+  <div class="form-group">
+    <span>
+      <%= 'Не можете выбрать картинку?' %>
+    </span>
+    <span class="flickr-button btn btn-default">
+      <%= 'Поиск на Flickr' %>
+    </span>
+  </div>
+
+  <div class="form-group hidden clearfix" id="flickr-search-form">
+    <div class="row flickr-search">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <%= text_field_tag :search, nil, class: "form-control", placeholder: 'Search for ...' %>
+          <span class="input-group-btn">
+            <button class="btn btn-default" id="flickr-search-run" type="button">Go!</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="form-group">
     <%= f.input :block_id, collection: current_user.blocks.all.order('title'),
                       prompt: 'Выберите колоду', label: 'Колоды',

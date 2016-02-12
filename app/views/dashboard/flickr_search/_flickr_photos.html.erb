@@ -1,0 +1,24 @@
+<div class="gallery">
+  <div class="row">
+    <div class="col-lg-9 col-lg-offset-3">
+      <% if @photos.empty? %>
+        <h5>Мы не можем найти фото для <strong>"<%= @search_tag %>"</strong>. Измените параметры поиска. </h5>
+      <% elsif @search_tag.blank? %>
+        <h5>Вы не ввели слова для поиска. </h5>
+      <% else %>
+        <h5>Вот что мы нашли для слова <strong>"<%= @search_tag %>"</strong> </h5>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="photo-grid">
+      <% @photos.each do |photo| %>
+        <div class="col-xs-5 col-md-2 <%= "col-xs-offset-1" if @photos.index(photo) == 0 || @photos.index(photo) == 5 %>">
+          <a href="#" class="thumbnail thumbnail-photo" id="thumbnail-<%= @photos.index(photo) %>">
+            <%= image_tag photo, id: "photo-#{@photos.index(photo)}" %>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
