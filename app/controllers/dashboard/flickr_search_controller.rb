@@ -1,5 +1,7 @@
 module Dashboard
   class FlickrSearchController < Dashboard::BaseController
+    require 'flickraw-cached'
+
     respond_to :js
 
     def search

@@ -39,7 +39,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'rolify'
 gem 'pundit'
 
-gem 'flickraw'
+gem 'flickraw-cached'
 
 group :development do
   gem 'web-console'

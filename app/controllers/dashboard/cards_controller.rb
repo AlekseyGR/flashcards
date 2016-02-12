@@ -1,5 +1,4 @@
 class Dashboard::CardsController < Dashboard::BaseController
-  require 'flickraw'
 
   before_action :set_card, only: [:destroy, :edit, :update]
 
