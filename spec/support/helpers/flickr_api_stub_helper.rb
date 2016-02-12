@@ -84,21 +84,17 @@ module FlickrApiStubHelper
   ]
 
   def flickr_responce_stub
-    @recent_response = RECENT_RESPONCE.to_json
-
-    @search_response = SEARCH_RESPONCE.to_json
-
+    recent_response = RECENT_RESPONCE.to_json
+    search_response = SEARCH_RESPONCE.to_json
     @searched_photo_result = SEARCHED_PHOTO_RESULT
-
     @resent_photo_result = RESEND_PHOTO_RESULT
 
-    stub_request(:post, "https://api.flickr.com/services/rest/")
-      .with(:body => {"format"=>"json", "method"=>"flickr.photos.getRecent", "nojsoncallback"=>"1", "per_page"=>"10"})
-      .and_return(body: @recent_response)
+    stub_request(:post, 'https://api.flickr.com/services/rest/')
+      .with(body: { format: 'json', method: 'flickr.photos.getRecent', nojsoncallback: '1', per_page: '10' })
+      .and_return(body: recent_response)
 
-    stub_request(:post, "https://api.flickr.com/services/rest/")
-      .with(:body => {"format"=>"json", "method"=>"flickr.photos.search", "nojsoncallback"=>"1", "per_page"=>"10", "text"=>"test"})
-      .and_return(body: @search_response)
-
+    stub_request(:post, 'https://api.flickr.com/services/rest/')
+      .with(body: { format: 'json', method: 'flickr.photos.search',
+                    nojsoncallback: '1', per_page: '10', text: 'test' }).and_return(body: search_response)
   end
 end

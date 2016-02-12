@@ -4,7 +4,7 @@ include FlickrApiStubHelper
 
 describe Dashboard::FlickrSearchController do
   let(:user) { FactoryGirl.create(:user) }
-  let(:arr) {assigns(:photos)}
+  let(:arr) { assigns(:photos) }
 
   before(:each) do
     flickr_responce_stub
@@ -28,7 +28,7 @@ describe Dashboard::FlickrSearchController do
       expect(arr.length).to eq 10
     end
 
-    it 'returns recend photo'do
+    it 'returns recend photo' do
       expect(arr).to eq(@resent_photo_result)
     end
   end
