@@ -58,48 +58,47 @@ module FlickrApiStubHelper
       ] }, 'stat': 'ok' }
 
   SEARCHED_PHOTO_RESULT = [
-    'https://farm2.staticflickr.com/1667/24503450029_3a043b85b1_q.jpg',
-    'https://farm2.staticflickr.com/1557/24753089122_7103b52410_q.jpg',
-    'https://farm2.staticflickr.com/1485/24574860910_498f9b0e25_q.jpg',
-    'https://farm2.staticflickr.com/1622/24844673716_1d598fea4b_q.jpg',
-    'https://farm2.staticflickr.com/1566/24777399031_5e69c152c0_q.jpg',
-    'https://farm2.staticflickr.com/1710/24503208499_bdfb1e2583_q.jpg',
-    'https://farm2.staticflickr.com/1650/24575342780_e66b987bc6_q.jpg',
-    'https://farm2.staticflickr.com/1672/24870790205_695e2dee96_q.jpg',
-    'https://farm2.staticflickr.com/1538/24844531776_117088d677_q.jpg',
-    'https://farm2.staticflickr.com/1688/24777365301_5fe568e0c1_q.jpg'
+    'https://farm2.staticflickr.com/1458/24932258435_435b9810c8_q.jpg',
+    'https://farm2.staticflickr.com/1490/24905333176_03eb9f6905_q.jpg',
+    'https://farm2.staticflickr.com/1500/24564007179_76504d5923_q.jpg',
+    'https://farm2.staticflickr.com/1592/24813674542_89291c8fc1_q.jpg',
+    'https://farm2.staticflickr.com/1538/24813551652_142519128e_q.jpg',
+    'https://farm2.staticflickr.com/1493/24838108311_099272bbb5_q.jpg',
+    'https://farm2.staticflickr.com/1619/24300750114_7e884b9986_q.jpg',
+    'https://farm2.staticflickr.com/1638/24304500903_11b9ef705d_q.jpg',
+    'https://farm2.staticflickr.com/1640/24838013681_efa5682a8a_q.jpg',
+    'https://farm2.staticflickr.com/1533/24813391572_288f2d6441_q.jpg'
   ]
 
   RESEND_PHOTO_RESULT = [
-    'https://farm2.staticflickr.com/1690/24302286974_e0c00e989f_q.jpg',
-    'https://farm2.staticflickr.com/1593/24302287364_a071fd6a88_q.jpg',
-    'https://farm2.staticflickr.com/1572/24302287374_654f2758c9_q.jpg',
-    'https://farm2.staticflickr.com/1699/24302287604_b6753d19f9_q.jpg',
-    'https://farm2.staticflickr.com/1502/24302287934_b50fa68974_q.jpg',
-    'https://farm2.staticflickr.com/1718/24306046133_cd20720b0c_q.jpg',
-    'https://farm2.staticflickr.com/1605/24306046523_5d004949ce_q.jpg',
-    'https://farm2.staticflickr.com/1477/24814934032_dbacd8038c_q.jpg',
-    'https://farm2.staticflickr.com/1708/24814934672_e4e19300e7_q.jpg',
-    'https://farm2.staticflickr.com/1480/24814934682_89d17c58f1_q.jpg'
+    'https://farm2.staticflickr.com/1631/24302016344_72f2a42ea1_q.jpg',
+    'https://farm2.staticflickr.com/1632/24302016734_a8913eb2a5_q.jpg',
+    'https://farm2.staticflickr.com/1496/24305771763_1daffca263_q.jpg',
+    'https://farm2.staticflickr.com/1496/24305772243_67b295e355_q.jpg',
+    'https://farm2.staticflickr.com/1583/24637134960_6ec863eaee_q.jpg',
+    'https://farm2.staticflickr.com/1554/24637135130_f4376fbd20_q.jpg',
+    'https://farm2.staticflickr.com/1716/24814660252_8ca0305101_q.jpg',
+    'https://farm2.staticflickr.com/1507/24839282541_417a30282a_q.jpg',
+    'https://farm2.staticflickr.com/1514/24906312206_ebf473f7c3_q.jpg',
+    'https://farm2.staticflickr.com/1441/24932619875_0f32664be6_q.jpg'
   ]
 
   def flickr_responce_stub
-    recent_response = RECENT_RESPONCE.to_json
+    @recent_response = RECENT_RESPONCE.to_json
 
-    search_response = SEARCH_RESPONCE.to_json
+    @search_response = SEARCH_RESPONCE.to_json
 
     @searched_photo_result = SEARCHED_PHOTO_RESULT
 
     @resent_photo_result = RESEND_PHOTO_RESULT
 
-    stub_request(:get, "https://api.flickr.com/services/rest?api_key="\
-      "#{FlickRaw.api_key}&extras=&format=json&"\
-      "method=flickr.photos.getRecent&nojsoncallback=1&per_page=10").
-      to_return(status: 200, body: "#{recent_response}", headers: {})
+    stub_request(:post, "https://api.flickr.com/services/rest/")
+      .with(:body => {"format"=>"json", "method"=>"flickr.photos.getRecent", "nojsoncallback"=>"1", "per_page"=>"10"})
+      .and_return(body: @recent_response)
 
-    stub_request(:get, "https://api.flickr.com/services/rest?api_key="\
-      "#{FlickRaw.api_key}&format=json&"\
-      "method=flickr.photos.search&nojsoncallback=1&per_page=10&text=coffee").
-      to_return(status: 200, body: "#{search_response}", headers: {})
+    stub_request(:post, "https://api.flickr.com/services/rest/")
+      .with(:body => {"format"=>"json", "method"=>"flickr.photos.search", "nojsoncallback"=>"1", "per_page"=>"10", "text"=>"test"})
+      .and_return(body: @search_response)
+
   end
 end
