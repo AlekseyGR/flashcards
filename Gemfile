@@ -41,9 +41,12 @@ gem 'pundit'
 
 gem 'flickraw-cached'
 
+gem 'api_flashcards', git: 'https://github.com/AlekseyGR/api_flashcards'
+
 group :development do
   gem 'web-console'
   gem 'rubocop', require: false
+  gem 'quiet_assets'
 end
 
 group :development, :test do
@@ -58,3 +61,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'webmock'
 end
+
+# gem 'apipie-rails'
