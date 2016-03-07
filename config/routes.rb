@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   filter :locale
+  apipie
+  mount ApiFlashcards::Engine, at: "/api"
 
   root 'main#index'
 
