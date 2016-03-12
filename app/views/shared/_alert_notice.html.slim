@@ -1,0 +1,12 @@
+- if flash[:alert] || flash[:notice]
+  .col-sm-12
+    - if flash[:notice]
+      .alert.alert-info.alert-dismissible role='alert'
+        button.close aria_label='Close' data_dismiss='alert' type='button'
+          span aria_hidden='true' &times;
+        p#alert= flash[:notice]
+    - if flash[:alert]
+      .alert.alert-warning.alert-dismissible role='alert'
+        button.close aria_label='Close' data_dismiss='alert' type='button'
+          span aria_hidden='true' &times;
+        p#alert= flash[:alert]

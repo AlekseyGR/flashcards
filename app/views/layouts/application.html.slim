@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title Флэшкарточкер
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  body
+    .container#wrapper
+      = render 'shared/header'
+      .row#middle
+        #notice_block
+          = render 'shared/alert_notice'
+        .col-sm-12
+          = yield
