@@ -10,10 +10,20 @@
         .collapse.navbar-collapse#bs-example-navbar-collapse-1
           - if current_user
             ul.nav.navbar-nav.navbar-left
-              li= link_to t(:all_decks_label), blocks_path
-              li= link_to t(:add_deck_label), new_block_path
-              li= link_to t(:all_cards_label), cards_path
-              li= link_to t(:add_card_label), new_card_path
+              li.dropdown
+                = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
+                  = t(:blocks_label)
+                  span.caret
+                ul.dropdown-menu
+                  li= link_to t(:all_decks_label), blocks_path
+                  li= link_to t(:add_deck_label), new_block_path
+              li.dropdown
+                = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
+                  = t(:cards_label)
+                  span.caret
+                ul.dropdown-menu
+                  li= link_to t(:all_cards_label), cards_path
+                  li= link_to t(:add_card_label), new_card_path
           p.navbar-text.navbar-right
             - if current_user
               = link_to t(:user_profile_label), edit_profile_path(current_user), class: 'navbar-link'
