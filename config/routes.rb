@@ -32,6 +32,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :parse_cards, only: [:new, :create]
+
     put 'review_card' => 'trainer#review_card'
     get 'trainer' => 'trainer#index'
 

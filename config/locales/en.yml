@@ -36,6 +36,12 @@ en:
   log_out_is_successful_notice: 'Log out is successful.'
   log_out_failed_provider_alert: "Log out of your account %{provider} failed."
   please_log_in: 'Please log in.'
+  add_cards_from_url: Add cards from url.
+  url: Add URL for cards parsing
+  original_text_selector: Add original text selector
+  translated_text_selector: Add translated text selector
+  block_prompt: --- Choose block ---
+  block_label: Block
 
   activerecord:
       errors:

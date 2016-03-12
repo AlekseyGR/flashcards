@@ -1,0 +1,10 @@
+= simple_form_for :parse_cards, url: parse_cards_path, method: :put do |f|
+  .form-group
+    = f.input :url, as: :string, label: t(:url), input_html: { class: 'form-control', autofocus: true, required: true }
+  .form-group
+    = f.input :original_text_selector, as: :string, label: t(:original_text_selector), input_html: { class: 'form-control', required: true }
+  .form-group
+    = f.input :translated_text_selector, as: :string, label: t(:translated_text_selector), input_html: { class: 'form-control', required: true }
+  .form-group
+    = f.input :block_id, collection: current_user.blocks.all.order('title'), prompt: t(:block_prompt), label: t(:block_label), input_html: { class: 'form-control', required: true }
+  = f.button :submit, t(:add_card_label), class: 'btn btn-default', id: 'add_cards_button'
