@@ -10,6 +10,15 @@ class AddCardsFromUrlJob < ActiveJob::Base
       block_id: args[:block_id]
     }
 
+    Rails.logger.warn '<' * 120
+    Rails.logger.warn ""
+    Rails.logger.warn ""
+    Rails.logger.warn ""
+    Rails.logger.warn "test"
+    Rails.logger.warn ""
+    Rails.logger.warn ""
+    Rails.logger.warn ""
+    Rails.logger.warn '<' * 120
     parser = CardParser.new(parse_params)
   end
 end

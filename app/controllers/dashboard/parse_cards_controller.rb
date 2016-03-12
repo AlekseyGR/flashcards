@@ -1,5 +1,5 @@
 module Dashboard
-  class ParseCardsController < ApplicationController
+  class ParseCardsController < Dashboard::BaseController
     def new; end
 
     def create
