@@ -7,6 +7,9 @@ gem 'rails'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'puma'
+gem 'sidekiq'
+gem 'sinatra', require: false # web-panel for sidekiq
+
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -47,6 +50,7 @@ group :development do
   gem 'web-console'
   gem 'rubocop', require: false
   gem 'quiet_assets'
+  gem 'foreman'
 end
 
 group :development, :test do
