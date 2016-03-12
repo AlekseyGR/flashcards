@@ -42,6 +42,8 @@ en:
   translated_text_selector: Add translated text selector
   block_prompt: --- Choose block ---
   block_label: Block
+  blocks_label: Blocks
+  cards_label: Cards
 
   activerecord:
       errors:

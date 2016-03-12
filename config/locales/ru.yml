@@ -42,6 +42,8 @@ ru:
   translated_text_selector: Селектор перевода
   block_prompt: --- Выберите колоду ---
   block_label: Колода
+  blocks_label: Колоды
+  cards_label: Карточки
 
   activerecord:
     errors:
