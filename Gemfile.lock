@@ -392,6 +392,7 @@ DEPENDENCIES
   quiet_assets
   rails
   rails_12factor
+  rails_stdout_logging
   rake
   responders
   rolify

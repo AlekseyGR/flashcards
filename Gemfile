@@ -51,6 +51,7 @@ group :development do
   gem 'web-console'
   gem 'rubocop', require: false
   gem 'quiet_assets'
+  gem 'rails_stdout_logging'
   gem 'foreman'
 end
 
