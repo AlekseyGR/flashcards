@@ -27,5 +27,8 @@ module Flashcards
 
     # Propagate exceptions in after_rollback or after_commit (hides deprecation warning)
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Configure queue adapter for ActiveJob
+    config.active_job.queue_adapter = :sidekiq
   end
 end
