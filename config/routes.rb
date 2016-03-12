@@ -1,9 +1,10 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   filter :locale
   apipie
   mount ApiFlashcards::Engine, at: "/api"
-
+  mount Sidekiq::Web, at: '/sidekiq'
   root 'main#index'
 
   scope module: 'home' do
