@@ -1,4 +1,5 @@
-= simple_form_for :parse_cards, url: parse_cards_path, method: :put do |f|
+= simple_form_for :parse_cards, url: parse_cards_path, method: :post do |f|
+  = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
   .form-group
     = f.input :url, as: :string, label: t(:url), input_html: { class: 'form-control', autofocus: true, required: true }
   .form-group
