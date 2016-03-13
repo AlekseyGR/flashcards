@@ -1,24 +1,14 @@
 class AddCardsFromUrlJob < ActiveJob::Base
   queue_as :add_cards
 
-  def perform(**args)
+  def perform(params)
     parse_params = {
-      url: args[:url],
-      original_text_selector: args[:original_text_selector],
-      translated_text_selector: args[:translated_text_selector],
-      user_id: args[:user_id],
-      block_id: args[:block_id]
+      url: params[:url],
+      original_text_selector: params[:original_text_selector],
+      translated_text_selector: params[:translated_text_selector],
+      user_id: params[:user_id],
+      block_id: params[:block_id]
     }
-
-    Rails.logger.warn '<' * 120
-    Rails.logger.warn ""
-    Rails.logger.warn ""
-    Rails.logger.warn ""
-    Rails.logger.warn "test"
-    Rails.logger.warn ""
-    Rails.logger.warn ""
-    Rails.logger.warn ""
-    Rails.logger.warn '<' * 120
-    parser = CardParser.new(parse_params)
+    # parser = CardParser.new(parse_params)
   end
 end
