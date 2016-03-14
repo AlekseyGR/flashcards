@@ -2,13 +2,15 @@ class AddCardsFromUrlJob < ActiveJob::Base
   queue_as :add_cards
 
   def perform(params)
-    parse_params = {
-      url: params[:url],
-      original_text_selector: params[:original_text_selector],
-      translated_text_selector: params[:translated_text_selector],
-      user_id: params[:user_id],
-      block_id: params[:block_id]
-    }
-    # parser = CardParser.new(parse_params)
+    words_collection = WordParser.word_collection(params[:url],
+                                                  params[:original_text_selector],
+                                                  params[:translated_text_selector])
+
+    if words_collection
+      words_collection.each do |original, translation|
+        Card.create(original_text: original, translated_text: translation,
+                    block_id: params[:block_id], user_id: params[:user_id])
+      end
+    end
   end
 end
