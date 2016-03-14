@@ -2,3 +2,4 @@
 :queues:
   - default
   - add_cards
+  - mailers
