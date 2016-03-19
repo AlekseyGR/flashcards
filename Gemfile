@@ -4,6 +4,7 @@ ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
+# gem 'actioncable', github: 'rails/actioncable', branch: 'archive'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -53,6 +54,7 @@ group :development do
   gem 'web-console'
   gem 'better_errors'
   gem "binding_of_caller"
+  gem 'meta_request'
   gem 'rubocop', require: false
   gem 'quiet_assets'
   gem 'rails_stdout_logging'
