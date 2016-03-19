@@ -51,6 +51,8 @@ gem 'api_flashcards', git: 'https://github.com/AlekseyGR/api_flashcards'
 
 group :development do
   gem 'web-console'
+  gem 'better_errors'
+  gem "binding_of_caller"
   gem 'rubocop', require: false
   gem 'quiet_assets'
   gem 'rails_stdout_logging'
