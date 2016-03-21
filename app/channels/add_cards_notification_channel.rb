@@ -1,9 +1,5 @@
 class AddCardsNotificationChannel < ApplicationCable::Channel
   def subscribed
-
-  end
-
-  def unsubscribed
-
+    stream_from "add_cards_notification"
   end
 end
