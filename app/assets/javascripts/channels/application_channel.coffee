@@ -1,4 +1,4 @@
 #= require cable
 
 @App = {}
-App.cable = Cable.createConsumer()
+App.cable = Cable.createConsumer('ws://127.0.0.1:28080')

@@ -41,7 +41,4 @@ Rails.application.routes.draw do
     get 'profile/:id/edit' => 'profile#edit', as: :edit_profile
     put 'profile/:id' => 'profile#update', as: :profile
   end
-
-  # match "/cable", :to => ActionCable.server, via: [:get, :post]
-  mount ActionCable.server => "/cable"
 end
