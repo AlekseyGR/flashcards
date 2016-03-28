@@ -4,7 +4,7 @@ module Dashboard
 
     def create
       AddCardsFromUrlJob.perform_later(parse_cards_params)
-      redirect_to cards_path, notice: "Cards adding task from #{parse_cards_params[:url]} was created"
+      redirect_to cards_path, notice: "Cards adding task from #{parse_cards_params[:url]} was added in queue."
     end
 
     private

@@ -1,17 +1,9 @@
 class AddCardsFromUrlJob < ActiveJob::Base
   queue_as :add_cards
 
-  after_perform do
-    p ''
-    p '*' * 120
-    p ""
-    p ""
-    # p "Current_user = #{current_user}"
-    p ""
-    p ""
-    p '*' * 120
-
-    ActionCable.server.broadcast 'add_cards_notification', message: "Your cards was created successfully"
+  after_perform do |job|
+    ActionCable.server.broadcast "add_cards_notification_#{job.arguments.first[:user_id]}",
+                                 message: "Your cards was created successfully"
   end
 
   def perform(params)
