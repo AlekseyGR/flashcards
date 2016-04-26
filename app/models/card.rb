@@ -1,6 +1,8 @@
 require 'super_memo'
 
 class Card < ActiveRecord::Base
+  DISTANCE_MAX = 1 # max levenstain distance value
+
   belongs_to :user
   belongs_to :block
 
@@ -24,7 +26,7 @@ class Card < ActiveRecord::Base
     distance = Levenshtein.distance(full_downcase(translated_text),
                                     full_downcase(user_translation))
 
-    sm_hash = SuperMemo.algorithm(interval, repeat, efactor, attempt, distance, 1)
+    sm_hash = SuperMemo.algorithm(interval, repeat, efactor, attempt, distance, DISTANCE_MAX)
 
     handle_answer_distance(distance, sm_hash)
   end
@@ -45,7 +47,7 @@ class Card < ActiveRecord::Base
   end
 
   def handle_answer_distance(distance, sm_hash)
-    if distance <= 1
+    if distance <= DISTANCE_MAX
       sm_hash.merge!(review_date: Time.zone.now + interval.to_i.days, attempt: 1)
       update(sm_hash)
       { state: true, distance: distance }
