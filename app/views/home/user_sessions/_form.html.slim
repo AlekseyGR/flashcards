@@ -1,0 +1,10 @@
+= form_tag user_sessions_path, method: :post do
+  .form-group
+    = label_tag t(:email_label)
+    br
+    = text_field_tag :email, nil, class: 'form-control', required: true, autofocus: true
+  .form-group
+    = label_tag t(:password_label)
+    br
+    = password_field_tag :password, nil, class: 'form-control', required: true
+  = submit_tag t(:log_in_label), class: 'btn btn-default'

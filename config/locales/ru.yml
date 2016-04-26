@@ -36,6 +36,15 @@ ru:
   log_out_is_successful_notice: 'Выход выполнен успешно.'
   log_out_failed_provider_alert: "Вход из аккаунта %{provider.titleize} не выполнен ."
   please_log_in: 'Пожалуйста авторизуйтесь.'
+  add_cards_from_url: Добавление карточек из web-страницы.
+  add_cards_from_url_label: Добавить карточки из URL
+  url: URL страницы
+  original_text_selector: Селектор текста
+  translated_text_selector: Селектор перевода
+  block_prompt: --- Выберите колоду ---
+  block_label: Колода
+  blocks_label: Колоды
+  cards_label: Карточки
 
   activerecord:
     errors:

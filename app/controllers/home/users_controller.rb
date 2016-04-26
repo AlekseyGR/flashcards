@@ -12,6 +12,7 @@ class Home::UsersController < Home::BaseController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
+      cookies.signed[:user_id] = @user.id
       redirect_to root_path, notice: t(:user_created_successfully_notice)
     else
       respond_with @user

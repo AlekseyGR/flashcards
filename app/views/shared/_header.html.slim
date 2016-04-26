@@ -1,0 +1,45 @@
+.row#header
+  .col-sm-12
+    nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          - if current_user
+            = link_to t(:flashcards_label), trainer_path, class: "navbar-brand"
+          - else
+            = link_to t(:flashcards_label), root_path, class: "navbar-brand"
+        .collapse.navbar-collapse#bs-example-navbar-collapse-1
+          - if current_user
+            ul.nav.navbar-nav.navbar-left
+              li.dropdown
+                = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
+                  = t(:blocks_label)
+                  span.caret
+                ul.dropdown-menu
+                  li= link_to t(:all_decks_label), blocks_path
+                  li= link_to t(:add_deck_label), new_block_path
+              li.dropdown
+                = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
+                  = t(:cards_label)
+                  span.caret
+                ul.dropdown-menu
+                  li= link_to t(:all_cards_label), cards_path
+                  li= link_to t(:add_card_label), new_card_path
+                  li= link_to t(:add_cards_from_url_label), new_parse_card_path
+          p.navbar-text.navbar-right
+            - if current_user
+              = link_to t(:user_profile_label), edit_profile_path(current_user), class: 'navbar-link'
+              '  |
+              = link_to t(:delete_user_label), user_path(current_user), method: :delete,
+                        class: 'navbar-link', data: { confirm: 'Удалить пользователя?' }
+              '  |
+              = link_to t(:log_out_label), :logout, method: :post, class: 'navbar-link'
+            - else
+              = link_to t(:sing_up_label), new_user_path, class: 'navbar-link'
+              '  |
+              = link_to t(:log_in_with_github_label), auth_at_provider_path(provider: :github), class: 'navbar-link'
+              '  |
+              = link_to t(:log_in_label), :login, class: 'navbar-link'
+              '  |
+              - I18n.available_locales.each do |locale|
+                '
+                = link_to locale, root_path(user_locale: locale), class: 'navbar-link'

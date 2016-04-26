@@ -1,9 +1,10 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   filter :locale
   apipie
   mount ApiFlashcards::Engine, at: "/api"
-
+  mount Sidekiq::Web, at: '/sidekiq'
   root 'main#index'
 
   scope module: 'home' do
@@ -31,6 +32,8 @@ Rails.application.routes.draw do
         put 'reset_as_current'
       end
     end
+
+    resources :parse_cards, only: [:new, :create]
 
     put 'review_card' => 'trainer#review_card'
     get 'trainer' => 'trainer#index'

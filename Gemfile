@@ -1,15 +1,22 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3'
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
+gem 'actioncable', github: 'rails/actioncable', branch: 'archive'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'puma'
+gem 'sidekiq'
+gem 'sinatra', require: false # web-panel for sidekiq
+
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'bootstrap-sass', '~> 3.3.5'
+gem "slim-rails"
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
@@ -45,8 +52,13 @@ gem 'api_flashcards', git: 'https://github.com/AlekseyGR/api_flashcards'
 
 group :development do
   gem 'web-console'
+  gem 'better_errors'
+  gem "binding_of_caller"
+  gem 'meta_request'
   gem 'rubocop', require: false
   gem 'quiet_assets'
+  gem 'rails_stdout_logging'
+  gem 'foreman'
 end
 
 group :development, :test do
@@ -62,4 +74,3 @@ group :test do
   gem 'webmock'
 end
 
-# gem 'apipie-rails'
