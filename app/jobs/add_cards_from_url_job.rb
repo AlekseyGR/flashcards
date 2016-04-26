@@ -3,7 +3,7 @@ class AddCardsFromUrlJob < ActiveJob::Base
 
   after_perform do |job|
     ActionCable.server.broadcast "add_cards_notification_#{job.arguments.first[:user_id]}",
-                                 message: "Your cards was created successfully"
+                                 message: 'Your cards was created successfully'
   end
 
   def perform(params)
