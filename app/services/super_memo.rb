@@ -19,7 +19,9 @@ class SuperMemo
       interval = case repeat
                  when 1 then 1
                  when 2 then 6
-                 else (interval * efactor).round
+                 else
+                   (interval * efactor).round
+                   [result, 365].min # max 1 year
                  end
       { interval: interval, efactor: efactor, repeat: repeat }
     end
