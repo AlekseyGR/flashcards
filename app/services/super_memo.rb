@@ -21,8 +21,8 @@ class SuperMemo
                  when 2 then 6
                  else
                    (interval * efactor).round
-                   [result, 365].min # max 1 year
                  end
+      [interval, 365].min # max 1 year
       { interval: interval, efactor: efactor, repeat: repeat }
     end
 
