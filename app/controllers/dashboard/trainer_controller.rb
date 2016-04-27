@@ -21,9 +21,13 @@ class Dashboard::TrainerController < Dashboard::BaseController
     if check_result[:state]
       handle_correct_answer(check_result[:distance])
       redirect_to trainer_path
-    else
+    elsif @card.attempt < 5
       flash[:alert] = t(:incorrect_translation_alert)
       redirect_to trainer_path(id: @card.id)
+    else
+      @card.update_attributes(attempt: 0)
+      flash[:alert] = t(:incorrect_translation_alert)
+      redirect_to trainer_path
     end
   end
 

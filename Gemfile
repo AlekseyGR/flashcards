@@ -51,7 +51,7 @@ gem 'flickraw-cached'
 gem 'api_flashcards', git: 'https://github.com/AlekseyGR/api_flashcards'
 
 group :development do
-  gem 'web-console'
+  gem 'annotate'
   gem 'better_errors'
   gem "binding_of_caller"
   gem 'meta_request'
