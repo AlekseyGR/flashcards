@@ -1,3 +1,27 @@
+# ## Schema Information
+#
+# Table name: `cards`
+#
+# ### Columns
+#
+# Name                   | Type               | Attributes
+# ---------------------- | ------------------ | ---------------------------
+# **`attempt`**          | `integer`          | `default("1"), not null`
+# **`block_id`**         | `integer`          | `not null`
+# **`created_at`**       | `datetime`         |
+# **`efactor`**          | `float`            | `default("2.5"), not null`
+# **`id`**               | `integer`          | `not null, primary key`
+# **`image`**            | `string`           |
+# **`interval`**         | `integer`          | `default("1"), not null`
+# **`original_text`**    | `text`             |
+# **`quality`**          | `integer`          | `default("5"), not null`
+# **`repeat`**           | `integer`          | `default("1"), not null`
+# **`review_date`**      | `datetime`         | `not null`
+# **`translated_text`**  | `text`             |
+# **`updated_at`**       | `datetime`         |
+# **`user_id`**          | `integer`          | `not null`
+#
+
 require 'super_memo'
 
 class Card < ActiveRecord::Base
