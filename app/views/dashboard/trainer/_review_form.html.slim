@@ -1,7 +1,7 @@
 - if card
   h2= t(:current_card_label)
   = form_tag review_card_path(card_id: card.id), method: :put, remote: true do
-    - if card.image?
+    - if card.image.present?
       .form-group
         .row
           .col-xs-3.col-md-2.card_image

@@ -27,7 +27,7 @@
                   li= link_to t(:add_cards_from_url_label), new_parse_card_path
           p.navbar-text.navbar-right
             - if current_user
-              = link_to t(:user_profile_label), edit_profile_path(current_user), class: 'navbar-link'
+              = link_to current_user.email, edit_profile_path(current_user), class: 'navbar-link'
               '  |
               = link_to t(:delete_user_label), user_path(current_user), method: :delete,
                         class: 'navbar-link', data: { confirm: 'Удалить пользователя?' }
